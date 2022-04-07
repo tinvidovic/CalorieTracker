@@ -14,6 +14,7 @@ import com.plcoding.core.domain.preferences.IPreferences.PreferencesConstants.KE
 import com.plcoding.core.domain.preferences.IPreferences.PreferencesConstants.KEY_GOAL_TYPE
 import com.plcoding.core.domain.preferences.IPreferences.PreferencesConstants.KEY_HEIGHT
 import com.plcoding.core.domain.preferences.IPreferences.PreferencesConstants.KEY_PROTEIN_RATIO
+import com.plcoding.core.domain.preferences.IPreferences.PreferencesConstants.KEY_SHOULD_SHOW_ONBOARDING
 import com.plcoding.core.domain.preferences.IPreferences.PreferencesConstants.KEY_WEIGHT
 import java.util.prefs.Preferences
 
@@ -106,6 +107,21 @@ class DefaultPreferences(
             carbRatio,
             proteinRatio,
             fatRatio
+        )
+    }
+
+    override fun saveShouldShowOnboarding(shouldShow: Boolean) {
+
+        sharedPref.edit()
+            .putBoolean(KEY_SHOULD_SHOW_ONBOARDING, shouldShow)
+            .apply()
+    }
+
+    override fun loadShouldShowOnboarding(): Boolean {
+
+        return sharedPref.getBoolean(
+            KEY_SHOULD_SHOW_ONBOARDING,
+            true
         )
     }
 }
