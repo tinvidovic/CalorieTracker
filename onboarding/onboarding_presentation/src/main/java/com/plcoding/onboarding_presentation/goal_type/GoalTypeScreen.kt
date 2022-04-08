@@ -11,19 +11,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.plcoding.core.domain.models.ActivityLevel
 import com.plcoding.core.domain.models.GoalType
 import com.plcoding.core.util.UiEvent
 import com.plcoding.core_ui.LocalSpacing
 import com.plcoding.onboarding_presentation.R
-import com.plcoding.onboarding_presentation.activity_level.ActivityLevelViewModel
 import com.plcoding.onboarding_presentation.components.ActionButton
 import com.plcoding.onboarding_presentation.components.SelectableButton
 import kotlinx.coroutines.flow.collect
 
 @Composable
 fun GoalTypeScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: GoalTypeViewModel = hiltViewModel()
 ) {
 
@@ -33,7 +31,7 @@ fun GoalTypeScreen(
         viewModel.uiEventChannel.collect { event ->
 
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
 
             }

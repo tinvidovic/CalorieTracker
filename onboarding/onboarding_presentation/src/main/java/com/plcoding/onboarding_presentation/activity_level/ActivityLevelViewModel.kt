@@ -6,9 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.plcoding.core.domain.models.ActivityLevel
-import com.plcoding.core.domain.models.Gender
 import com.plcoding.core.domain.preferences.IPreferences
-import com.plcoding.core.navigation.Route
 import com.plcoding.core.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -37,7 +35,7 @@ class ActivityLevelViewModel @Inject constructor(
         viewModelScope.launch {
 
             preferences.saveActivityLevel(selectedActivityLevel)
-            _uiEventChannel.send(UiEvent.Navigate(Route.GOAL))
+            _uiEventChannel.send(UiEvent.Success)
         }
     }
 }

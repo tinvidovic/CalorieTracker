@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.collect
 
 @Composable
 fun GenderScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: GenderViewModel = hiltViewModel()
 ) {
 
@@ -31,7 +31,7 @@ fun GenderScreen(
         viewModel.uiEventChannel.collect { event ->
 
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
 
             }
