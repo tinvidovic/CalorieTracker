@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.plcoding.calorytracker"
+    namespace = "com.nticoding.calorytracker"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.plcoding.calorytracker"
+        applicationId = "com.nticoding.calorytracker"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

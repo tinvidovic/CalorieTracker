@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "CaloryTracker"
+rootProject.name = "CalorieTracker"
 include(":app")
  
