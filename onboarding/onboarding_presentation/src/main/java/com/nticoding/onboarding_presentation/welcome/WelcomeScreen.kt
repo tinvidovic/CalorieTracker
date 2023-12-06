@@ -13,12 +13,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import com.nticoding.core.navigation.Route
+import com.nticoding.core.util.UIEvent
 import com.nticoding.core_ui.localSpacing
 import com.nticoding.onboarding_presentation.welcome.components.ActionButton
 import com.nticoding.core.R as coreR
 
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    onNavigate: (UIEvent.Navigate) -> Unit
+) {
     val spacing = localSpacing.current
     Column(
         modifier = Modifier
@@ -35,7 +39,7 @@ fun WelcomeScreen() {
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         ActionButton(
             text = stringResource(id = coreR.string.next),
-            onClick = { /*TODO*/ },
+            onClick = { onNavigate(UIEvent.Navigate(Route.AGE)) },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
     }
