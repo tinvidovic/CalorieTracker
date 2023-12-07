@@ -18,8 +18,7 @@ class MainActivity : ComponentActivity() {
             CalorieTrackerTheme {
                 val navController = rememberNavController()
                 NavHost(
-                    navController = navController,
-                    startDestination = Route.WELCOME
+                    navController = navController, startDestination = Route.WELCOME
                 ) {
                     composable(Route.WELCOME) {
                         WelcomeScreen(onNavigate = navController::navigate)
