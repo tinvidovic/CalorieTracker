@@ -10,7 +10,10 @@ import com.nticoding.calorytracker.ui.theme.CalorieTrackerTheme
 import com.nticoding.core.navigation.Route
 import com.nticoding.calorytracker.navigation.navigate
 import com.nticoding.onboarding_presentation.welcome.WelcomeScreen
+import com.nticoding.onboarding_presentation.welcome.gender.GenderScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +30,7 @@ class MainActivity : ComponentActivity() {
 
                     }
                     composable(Route.GENDER) {
-
+                        GenderScreen(onNavigate = navController::navigate)
                     }
                     composable(Route.HEIGHT) {
 
