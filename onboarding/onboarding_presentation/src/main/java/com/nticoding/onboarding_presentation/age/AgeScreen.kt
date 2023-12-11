@@ -1,4 +1,4 @@
-package com.nticoding.onboarding_presentation.welcome.height
+package com.nticoding.onboarding_presentation.age
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,15 +20,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.nticoding.core.R
 import com.nticoding.core.util.UIEvent
 import com.nticoding.core_ui.localSpacing
-import com.nticoding.onboarding_presentation.welcome.age.AgeViewModel
-import com.nticoding.onboarding_presentation.welcome.components.ActionButton
-import com.nticoding.onboarding_presentation.welcome.components.UnitTextField
+import com.nticoding.onboarding_presentation.components.ActionButton
+import com.nticoding.onboarding_presentation.components.UnitTextField
 
 @Composable
-fun HeightScreen(
+fun AgeScreen(
     scaffoldState: ScaffoldState,
     onNavigate: (UIEvent.Navigate) -> Unit,
-    viewModel: HeightViewModel = hiltViewModel()
+    viewModel: AgeViewModel = hiltViewModel()
 ) {
     val spacing = localSpacing.current
     val context = LocalContext.current
@@ -58,14 +57,14 @@ fun HeightScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(id = R.string.whats_your_height),
+                text = stringResource(id = R.string.whats_your_age),
                 style = MaterialTheme.typography.h3
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             UnitTextField(
-                value = viewModel.height,
-                onValueChange = viewModel::onHeightEnter,
-                unit = stringResource(id = R.string.cm)
+                value = viewModel.age,
+                onValueChange = viewModel::onAgeEnter,
+                unit = stringResource(id = R.string.years)
             )
         }
         ActionButton(

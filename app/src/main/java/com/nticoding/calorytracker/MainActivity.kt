@@ -1,6 +1,5 @@
 package com.nticoding.calorytracker
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,12 +14,13 @@ import com.nticoding.calorytracker.ui.theme.CalorieTrackerTheme
 import com.nticoding.core.navigation.Route
 import com.nticoding.calorytracker.navigation.navigate
 import com.nticoding.onboarding_presentation.welcome.WelcomeScreen
-import com.nticoding.onboarding_presentation.welcome.activity.ActivityScreen
-import com.nticoding.onboarding_presentation.welcome.age.AgeScreen
-import com.nticoding.onboarding_presentation.welcome.gender.GenderScreen
-import com.nticoding.onboarding_presentation.welcome.goal.GoalScreen
-import com.nticoding.onboarding_presentation.welcome.height.HeightScreen
-import com.nticoding.onboarding_presentation.welcome.weight.WeightScreen
+import com.nticoding.onboarding_presentation.activity.ActivityScreen
+import com.nticoding.onboarding_presentation.age.AgeScreen
+import com.nticoding.onboarding_presentation.gender.GenderScreen
+import com.nticoding.onboarding_presentation.goal.GoalScreen
+import com.nticoding.onboarding_presentation.height.HeightScreen
+import com.nticoding.onboarding_presentation.nutrient_goal.NutrientGoalScreen
+import com.nticoding.onboarding_presentation.weight.WeightScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -66,7 +66,10 @@ class MainActivity : ComponentActivity() {
                             )
                         }
                         composable(Route.NUTRIENT_GOAL) {
-
+                            NutrientGoalScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.ACTIVITY) {
                             ActivityScreen(

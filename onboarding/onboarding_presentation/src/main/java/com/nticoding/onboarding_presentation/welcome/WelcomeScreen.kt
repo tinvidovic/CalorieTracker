@@ -16,7 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import com.nticoding.core.navigation.Route
 import com.nticoding.core.util.UIEvent
 import com.nticoding.core_ui.localSpacing
-import com.nticoding.onboarding_presentation.welcome.components.ActionButton
+import com.nticoding.onboarding_presentation.components.ActionButton
 import com.nticoding.core.R as coreR
 
 @Composable

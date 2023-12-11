@@ -1,4 +1,4 @@
-package com.nticoding.onboarding_presentation.welcome.age
+package com.nticoding.onboarding_presentation.height
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -19,21 +19,21 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class AgeViewModel @Inject constructor(
+class HeightViewModel @Inject constructor(
     private val preferences: Preferences,
     private val filterOutDigitsUseCase: FilterOutDigitsUseCase,
 ): ViewModel() {
 
-    var age by mutableStateOf("20")
+    var height by mutableStateOf("180")
         private set
 
     private val _uiEvent = Channel<UIEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    fun onAgeEnter(age: String) {
+    fun onHeightEnter(height: String) {
 
-        if (age.length <= 3) {
-            this.age = filterOutDigitsUseCase(age)
+        if (height.length <= 3) {
+            this.height = filterOutDigitsUseCase(height)
         }
     }
 
@@ -41,18 +41,18 @@ class AgeViewModel @Inject constructor(
 
         viewModelScope.launch {
 
-            val ageNumber = age.toIntOrNull() ?: kotlin.run {
+            val heightNumber = height.toIntOrNull() ?: kotlin.run {
 
                 _uiEvent.send(
                     UIEvent.ShowSnackbar(
-                        UIText.StringResource(R.string.error_age_cant_be_empty)
+                        UIText.StringResource(R.string.error_height_cant_be_empty)
                     )
                 )
                 return@launch
             }
 
-            preferences.saveAge(ageNumber)
-            _uiEvent.send(UIEvent.Navigate(Route.HEIGHT))
+            preferences.saveHeight(heightNumber)
+            _uiEvent.send(UIEvent.Navigate(Route.WEIGHT))
         }
     }
 }

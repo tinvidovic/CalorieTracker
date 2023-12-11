@@ -1,4 +1,4 @@
-package com.nticoding.onboarding_presentation.welcome.goal
+package com.nticoding.onboarding_presentation.activity
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,16 +20,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.nticoding.core.R
-import com.nticoding.core.domain.model.GoalType
+import com.nticoding.core.domain.model.ActivityLevel
 import com.nticoding.core.util.UIEvent
 import com.nticoding.core_ui.localSpacing
-import com.nticoding.onboarding_presentation.welcome.components.ActionButton
-import com.nticoding.onboarding_presentation.welcome.components.SelectableButton
+import com.nticoding.onboarding_presentation.components.ActionButton
+import com.nticoding.onboarding_presentation.components.SelectableButton
 
 @Composable
-fun GoalScreen(
+fun ActivityScreen(
     onNavigate: (UIEvent.Navigate) -> Unit,
-    viewModel: GoalViewModel = hiltViewModel()
+    viewModel: ActivityViewModel = hiltViewModel()
 ) {
     val spacing = localSpacing.current
     LaunchedEffect(key1 = true) {
@@ -51,18 +51,18 @@ fun GoalScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(id = R.string.lose_keep_or_gain_weight),
+                text = stringResource(id = R.string.whats_your_activity_level),
                 style = MaterialTheme.typography.h3
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             Row {
                 SelectableButton(
-                    text = stringResource(id = R.string.lose),
-                    isSelected = viewModel.selectedGoalType is GoalType.LoseWeight,
+                    text = stringResource(id = R.string.low),
+                    isSelected = viewModel.selectedActivityLevel is ActivityLevel.Low,
                     color = MaterialTheme.colors.primaryVariant,
                     selectedTextColor = Color.White,
                     onClick = {
-                        viewModel.onGoalTypeClick(GoalType.LoseWeight)
+                        viewModel.onActivityLevelClick(ActivityLevel.Low)
                     },
                     textStyle = MaterialTheme.typography.button.copy(
                         fontWeight = FontWeight.Normal
@@ -70,12 +70,12 @@ fun GoalScreen(
                 )
                 Spacer(modifier = Modifier.width(spacing.spaceMedium))
                 SelectableButton(
-                    text = stringResource(id = R.string.keep),
-                    isSelected = viewModel.selectedGoalType is GoalType.KeepWeight,
+                    text = stringResource(id = R.string.medium),
+                    isSelected = viewModel.selectedActivityLevel is ActivityLevel.Medium,
                     color = MaterialTheme.colors.primaryVariant,
                     selectedTextColor = Color.White,
                     onClick = {
-                        viewModel.onGoalTypeClick(GoalType.KeepWeight)
+                        viewModel.onActivityLevelClick(ActivityLevel.Medium)
                     },
                     textStyle = MaterialTheme.typography.button.copy(
                         fontWeight = FontWeight.Normal
@@ -83,12 +83,12 @@ fun GoalScreen(
                 )
                 Spacer(modifier = Modifier.width(spacing.spaceMedium))
                 SelectableButton(
-                    text = stringResource(id = R.string.gain),
-                    isSelected = viewModel.selectedGoalType is GoalType.GainWeight,
+                    text = stringResource(id = R.string.high),
+                    isSelected = viewModel.selectedActivityLevel is ActivityLevel.High,
                     color = MaterialTheme.colors.primaryVariant,
                     selectedTextColor = Color.White,
                     onClick = {
-                        viewModel.onGoalTypeClick(GoalType.GainWeight)
+                        viewModel.onActivityLevelClick(ActivityLevel.High)
                     },
                     textStyle = MaterialTheme.typography.button.copy(
                         fontWeight = FontWeight.Normal

@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import com.nticoding.core.data.preferences.DefaultPreferences
 import com.nticoding.core.domain.preferences.Preferences
 import com.nticoding.core.domain.use_case.FilterOutDigitsUseCase
+import com.nticoding.onboarding_domain.use_case.ValidateNutrientsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

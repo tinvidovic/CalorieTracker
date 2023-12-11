@@ -1,4 +1,4 @@
-package com.nticoding.onboarding_presentation.welcome.components
+package com.nticoding.onboarding_presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
