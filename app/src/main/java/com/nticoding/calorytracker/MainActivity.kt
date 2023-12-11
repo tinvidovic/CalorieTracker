@@ -1,8 +1,13 @@
 package com.nticoding.calorytracker
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Scaffold
+import androidx.compose.material.rememberScaffoldState
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -10,6 +15,7 @@ import com.nticoding.calorytracker.ui.theme.CalorieTrackerTheme
 import com.nticoding.core.navigation.Route
 import com.nticoding.calorytracker.navigation.navigate
 import com.nticoding.onboarding_presentation.welcome.WelcomeScreen
+import com.nticoding.onboarding_presentation.welcome.age.AgeScreen
 import com.nticoding.onboarding_presentation.welcome.gender.GenderScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,41 +26,54 @@ class MainActivity : ComponentActivity() {
         setContent {
             CalorieTrackerTheme {
                 val navController = rememberNavController()
-                NavHost(
-                    navController = navController, startDestination = Route.WELCOME
-                ) {
-                    composable(Route.WELCOME) {
-                        WelcomeScreen(onNavigate = navController::navigate)
-                    }
-                    composable(Route.AGE) {
+                val scaffoldState = rememberScaffoldState()
 
-                    }
-                    composable(Route.GENDER) {
-                        GenderScreen(onNavigate = navController::navigate)
-                    }
-                    composable(Route.HEIGHT) {
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    scaffoldState = scaffoldState,
+                ) { _ ->
 
-                    }
-                    composable(Route.WEIGHT) {
+                    NavHost(
+                        navController = navController, startDestination = Route.WELCOME
+                    ) {
+                        composable(Route.WELCOME) {
+                            WelcomeScreen(onNavigate = navController::navigate)
+                        }
+                        composable(Route.AGE) {
+                            AgeScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
+                        }
+                        composable(Route.GENDER) {
+                            GenderScreen(onNavigate = navController::navigate)
+                        }
+                        composable(Route.HEIGHT) {
 
-                    }
-                    composable(Route.NUTRIENT_GOAL) {
+                        }
+                        composable(Route.WEIGHT) {
 
-                    }
-                    composable(Route.ACTIVITY) {
+                        }
+                        composable(Route.NUTRIENT_GOAL) {
 
-                    }
-                    composable(Route.GOAL) {
+                        }
+                        composable(Route.ACTIVITY) {
 
+                        }
+                        composable(Route.GOAL) {
+
+                        }
+
+                        composable(Route.TRACKER_OVERVIEW) {
+
+                        }
+                        composable(Route.SEARCH) {
+
+                        }
                     }
 
-                    composable(Route.TRACKER_OVERVIEW) {
-
-                    }
-                    composable(Route.SEARCH) {
-
-                    }
                 }
+
             }
         }
     }
