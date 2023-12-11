@@ -1,4 +1,4 @@
-package com.nticoding.onboarding_presentation.welcome.components
+package com.nticoding.onboarding_presentation.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape

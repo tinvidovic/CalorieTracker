@@ -1,4 +1,4 @@
-package com.nticoding.onboarding_presentation.welcome.weight
+package com.nticoding.onboarding_presentation.weight
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

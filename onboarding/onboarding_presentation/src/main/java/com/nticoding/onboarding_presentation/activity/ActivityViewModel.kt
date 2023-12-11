@@ -1,11 +1,12 @@
-package com.nticoding.onboarding_presentation.welcome.goal
+package com.nticoding.onboarding_presentation.activity
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nticoding.core.domain.model.GoalType
+import com.nticoding.core.domain.model.ActivityLevel
+import com.nticoding.core.domain.model.Gender
 import com.nticoding.core.domain.preferences.Preferences
 import com.nticoding.core.navigation.Route
 import com.nticoding.core.util.UIEvent
@@ -16,24 +17,24 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class GoalViewModel @Inject constructor(
+class ActivityViewModel @Inject constructor(
     private val preferences: Preferences
 ): ViewModel() {
 
-    var selectedGoalType by mutableStateOf<GoalType>(GoalType.KeepWeight)
+    var selectedActivityLevel by mutableStateOf<ActivityLevel>(ActivityLevel.Medium)
         private set
 
     private val _uiEvent = Channel<UIEvent>()
     val uiEvent = _uiEvent.receiveAsFlow()
 
-    fun onGoalTypeClick(goalType: GoalType) {
-        selectedGoalType = goalType
+    fun onActivityLevelClick(activityLevel: ActivityLevel) {
+        selectedActivityLevel = activityLevel
     }
 
     fun onNextClick() {
         viewModelScope.launch {
-            preferences.saveGoalType(selectedGoalType)
-            _uiEvent.send(UIEvent.Navigate(Route.NUTRIENT_GOAL))
+            preferences.saveActivityLevel(selectedActivityLevel)
+            _uiEvent.send(UIEvent.Navigate(Route.GOAL))
         }
     }
 }

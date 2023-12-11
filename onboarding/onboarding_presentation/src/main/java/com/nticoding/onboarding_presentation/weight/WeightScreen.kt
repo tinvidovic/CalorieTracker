@@ -1,4 +1,4 @@
-package com.nticoding.onboarding_presentation.welcome.weight
+package com.nticoding.onboarding_presentation.weight
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,9 +20,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.nticoding.core.R
 import com.nticoding.core.util.UIEvent
 import com.nticoding.core_ui.localSpacing
-import com.nticoding.onboarding_presentation.welcome.components.ActionButton
-import com.nticoding.onboarding_presentation.welcome.components.UnitTextField
-import com.nticoding.onboarding_presentation.welcome.height.HeightViewModel
+import com.nticoding.onboarding_presentation.components.ActionButton
+import com.nticoding.onboarding_presentation.components.UnitTextField
 
 @Composable
 fun WeightScreen(
