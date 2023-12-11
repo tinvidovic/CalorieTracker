@@ -17,6 +17,8 @@ import com.nticoding.calorytracker.navigation.navigate
 import com.nticoding.onboarding_presentation.welcome.WelcomeScreen
 import com.nticoding.onboarding_presentation.welcome.age.AgeScreen
 import com.nticoding.onboarding_presentation.welcome.gender.GenderScreen
+import com.nticoding.onboarding_presentation.welcome.height.HeightScreen
+import com.nticoding.onboarding_presentation.welcome.weight.WeightScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -49,10 +51,17 @@ class MainActivity : ComponentActivity() {
                             GenderScreen(onNavigate = navController::navigate)
                         }
                         composable(Route.HEIGHT) {
+                            HeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
 
                         }
                         composable(Route.WEIGHT) {
-
+                            WeightScreen(
+                                scaffoldState = scaffoldState,
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.NUTRIENT_GOAL) {
 

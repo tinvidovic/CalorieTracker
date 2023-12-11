@@ -1,4 +1,4 @@
-package com.nticoding.onboarding_presentation.welcome.age
+package com.nticoding.onboarding_presentation.welcome.weight
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,12 +22,13 @@ import com.nticoding.core.util.UIEvent
 import com.nticoding.core_ui.localSpacing
 import com.nticoding.onboarding_presentation.welcome.components.ActionButton
 import com.nticoding.onboarding_presentation.welcome.components.UnitTextField
+import com.nticoding.onboarding_presentation.welcome.height.HeightViewModel
 
 @Composable
-fun AgeScreen(
+fun WeightScreen(
     scaffoldState: ScaffoldState,
     onNavigate: (UIEvent.Navigate) -> Unit,
-    viewModel: AgeViewModel = hiltViewModel()
+    viewModel: WeightViewModel = hiltViewModel()
 ) {
     val spacing = localSpacing.current
     val context = LocalContext.current
@@ -57,14 +58,14 @@ fun AgeScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = stringResource(id = R.string.whats_your_age),
+                text = stringResource(id = R.string.whats_your_weight),
                 style = MaterialTheme.typography.h3
             )
             Spacer(modifier = Modifier.height(spacing.spaceMedium))
             UnitTextField(
-                value = viewModel.age,
-                onValueChange = viewModel::onAgeEnter,
-                unit = stringResource(id = R.string.years)
+                value = viewModel.weight,
+                onValueChange = viewModel::onWeightEnter,
+                unit = stringResource(id = R.string.kg)
             )
         }
         ActionButton(
