@@ -15,8 +15,10 @@ import com.nticoding.calorytracker.ui.theme.CalorieTrackerTheme
 import com.nticoding.core.navigation.Route
 import com.nticoding.calorytracker.navigation.navigate
 import com.nticoding.onboarding_presentation.welcome.WelcomeScreen
+import com.nticoding.onboarding_presentation.welcome.activity.ActivityScreen
 import com.nticoding.onboarding_presentation.welcome.age.AgeScreen
 import com.nticoding.onboarding_presentation.welcome.gender.GenderScreen
+import com.nticoding.onboarding_presentation.welcome.goal.GoalScreen
 import com.nticoding.onboarding_presentation.welcome.height.HeightScreen
 import com.nticoding.onboarding_presentation.welcome.weight.WeightScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -67,10 +69,14 @@ class MainActivity : ComponentActivity() {
 
                         }
                         composable(Route.ACTIVITY) {
-
+                            ActivityScreen(
+                                onNavigate = navController::navigate
+                            )
                         }
                         composable(Route.GOAL) {
-
+                            GoalScreen(
+                                onNavigate = navController::navigate
+                            )
                         }
 
                         composable(Route.TRACKER_OVERVIEW) {
