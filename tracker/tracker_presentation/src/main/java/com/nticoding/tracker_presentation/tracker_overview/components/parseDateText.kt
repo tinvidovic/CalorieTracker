@@ -11,7 +11,8 @@ fun parseDateText(date: LocalDate): String {
     val today = LocalDate.now()
     return when (date) {
         today -> stringResource(id = coreR.string.today)
-        today.minusDays(1) -> stringResource(id = coreR.string.tomorrow)
+        today.minusDays(1) -> stringResource(id = coreR.string.yesterday)
+        today.plusDays(1) -> stringResource(id = coreR.string.tomorrow)
         else -> DateTimeFormatter.ofPattern("dd LLLL").format(date)
     }
 }

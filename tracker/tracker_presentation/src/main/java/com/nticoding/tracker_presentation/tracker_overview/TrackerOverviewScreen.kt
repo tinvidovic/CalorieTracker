@@ -36,7 +36,7 @@ fun TrackerOverviewScreen(
                     viewModel.onEvent(TrackerOverviewEvent.OnPreviousDayClick)
                 },
                 onNextDayClick = {
-                    viewModel.onEvent(TrackerOverviewEvent.OnPreviousDayClick)
+                    viewModel.onEvent(TrackerOverviewEvent.OnNextDayClick)
                 },
                 modifier = Modifier
                     .fillMaxWidth()
