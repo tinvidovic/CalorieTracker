@@ -1,6 +1,9 @@
 package com.nticoding.tracker_presentation.tracker_overview
 
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -9,12 +12,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.nticoding.core.util.UIEvent
 import com.nticoding.core_ui.localSpacing
+import com.nticoding.tracker_presentation.tracker_overview.components.DaySelector
 import com.nticoding.tracker_presentation.tracker_overview.components.NutrientsHeader
 
 @Composable
 fun TrackerOverviewScreen(
-    onNavigate: (UIEvent.Navigate) -> Unit,
-    viewModel: TrackerOverviewViewModel = hiltViewModel()
+    onNavigate: (UIEvent.Navigate) -> Unit, viewModel: TrackerOverviewViewModel = hiltViewModel()
 ) {
     val spacing = localSpacing.current
     val state = viewModel.state
@@ -26,6 +29,20 @@ fun TrackerOverviewScreen(
     ) {
         item {
             NutrientsHeader(state = state)
+            Spacer(modifier = Modifier.height(spacing.spaceMedium))
+            DaySelector(
+                date = state.date,
+                onPreviousDayClick = {
+                    viewModel.onEvent(TrackerOverviewEvent.OnPreviousDayClick)
+                },
+                onNextDayClick = {
+                    viewModel.onEvent(TrackerOverviewEvent.OnNextDayClick)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = spacing.spaceMedium)
+            )
+            Spacer(modifier = Modifier.height(spacing.spaceMedium))
         }
     }
 }
