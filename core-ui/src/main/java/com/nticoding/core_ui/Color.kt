@@ -1,4 +1,4 @@
-package com.nticoding.calorytracker.ui.theme
+package com.nticoding.core_ui
 
 import androidx.compose.ui.graphics.Color
 
