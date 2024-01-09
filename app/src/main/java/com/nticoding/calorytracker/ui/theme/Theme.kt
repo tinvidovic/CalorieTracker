@@ -8,7 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import com.nticoding.calorytrackerprep.ui.theme.Typography
+import com.nticoding.core_ui.BrightGreen
+import com.nticoding.core_ui.DarkGray
+import com.nticoding.core_ui.DarkGreen
 import com.nticoding.core_ui.Dimensions
+import com.nticoding.core_ui.LightGray
+import com.nticoding.core_ui.MediumGray
+import com.nticoding.core_ui.Orange
+import com.nticoding.core_ui.TextWhite
 import com.nticoding.core_ui.localSpacing
 
 private val DarkColorPalette = darkColors(
