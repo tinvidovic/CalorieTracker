@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.nticoding.core_ui.localSpacing
 import com.nticoding.core.R as coreR
@@ -43,17 +44,14 @@ fun SearchTextField(
     Box(
         modifier = modifier
     ) {
-        BasicTextField(
-            value = text,
+        BasicTextField(value = text,
             onValueChange = onValueChange,
             singleLine = true,
-            keyboardActions = KeyboardActions(
-                onSearch = {
-                    onSearch()
-                    // Close the keyboard
-                    defaultKeyboardAction(ImeAction.Search)
-                }
-            ),
+            keyboardActions = KeyboardActions(onSearch = {
+                onSearch()
+                // Close the keyboard
+                defaultKeyboardAction(ImeAction.Search)
+            }),
             keyboardOptions = KeyboardOptions(
                 imeAction = ImeAction.Search
             ),
@@ -61,16 +59,14 @@ fun SearchTextField(
                 .clip(RoundedCornerShape(5.dp))
                 .padding(2.dp)
                 .shadow(
-                    elevation = 2.dp,
-                    shape = RoundedCornerShape(5.dp)
+                    elevation = 2.dp, shape = RoundedCornerShape(5.dp)
                 )
                 .background(MaterialTheme.colors.surface)
                 .fillMaxWidth()
                 .padding(spacing.spaceMedium)
                 .padding(end = spacing.spaceMedium)
-                .onFocusChanged { onFocusChanged(it) }
-        )
-        if(shouldShowHint) {
+                .onFocusChanged { onFocusChanged(it) })
+        if (shouldShowHint) {
             Text(
                 text = hint,
                 style = MaterialTheme.typography.body1,
@@ -82,8 +78,7 @@ fun SearchTextField(
             )
         }
         IconButton(
-            onClick = onSearch,
-            modifier = Modifier.align(Alignment.CenterEnd)
+            onClick = onSearch, modifier = Modifier.align(Alignment.CenterEnd)
         ) {
             Icon(
                 imageVector = Icons.Default.Search,
