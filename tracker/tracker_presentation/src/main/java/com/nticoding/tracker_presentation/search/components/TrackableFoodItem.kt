@@ -32,6 +32,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 import com.nticoding.tracker_presentation.components.NutrientInfo
@@ -64,16 +65,18 @@ fun TrackableFoodItem(
             Row(
                 modifier = Modifier.weight(1f)
             ) {
-                Image(painter = rememberImagePainter(data = food.imageUrl, builder = {
-                    crossfade(true)
-                    error(coreR.drawable.ic_burger)
-                    fallback(coreR.drawable.ic_burger)
-                }),
+                Image(
+                    painter = rememberImagePainter(data = food.imageUrl, builder = {
+                        crossfade(true)
+                        error(coreR.drawable.ic_burger)
+                        fallback(coreR.drawable.ic_burger)
+                    }),
                     contentDescription = food.name,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(100.dp)
-                        .clip(RoundedCornerShape(topStart = 5.dp)))
+                        .clip(RoundedCornerShape(topStart = 5.dp))
+                )
                 Spacer(modifier = Modifier.width(spacing.spaceMedium))
                 Column(
                     modifier = Modifier.align(CenterVertically)
@@ -130,12 +133,14 @@ fun TrackableFoodItem(
                 verticalAlignment = CenterVertically
             ) {
                 Row {
-                    BasicTextField(value = trackableFoodUiState.amount,
+                    BasicTextField(
+                        value = trackableFoodUiState.amount,
                         onValueChange = onAmountChange,
                         keyboardOptions = KeyboardOptions(
                             imeAction = if (trackableFoodUiState.amount.isNotBlank()) {
                                 ImeAction.Done
-                            } else ImeAction.Default
+                            } else ImeAction.Default,
+                            keyboardType = KeyboardType.Number
                         ),
                         keyboardActions = KeyboardActions(onDone = {
                             onTrack()
@@ -149,7 +154,8 @@ fun TrackableFoodItem(
                                 color = MaterialTheme.colors.onSurface
                             )
                             .alignBy(LastBaseline)
-                            .padding(spacing.spaceMedium))
+                            .padding(spacing.spaceMedium)
+                    )
                     Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
                     Text(
                         text = stringResource(id = coreR.string.grams),

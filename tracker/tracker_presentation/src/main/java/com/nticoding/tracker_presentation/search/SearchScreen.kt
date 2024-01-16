@@ -76,10 +76,11 @@ fun SearchScreen(
         SearchTextField(text = state.query, onValueChange = {
             viewModel.onEvent(SearchEvent.OnQueryChange(it))
         }, onSearch = {
+            keyboardController?.hide()
             viewModel.onEvent(SearchEvent.OnSearch)
         }, onFocusChanged = {
             viewModel.onEvent(SearchEvent.OnSearchFocusChange(it.isFocused))
-        })
+        }, shouldShowHint = state.isHintVisible)
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         LazyColumn(
             modifier = Modifier.fillMaxSize()
@@ -98,6 +99,7 @@ fun SearchScreen(
                         )
                     )
                 }, onTrack = {
+                    keyboardController?.hide()
                     viewModel.onEvent(
                         SearchEvent.OnTrackFoodClick(
                             food = trackableFoodUiState.food,
@@ -110,8 +112,7 @@ fun SearchScreen(
         }
     }
     Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
     ) {
         when {
             state.isSearching -> CircularProgressIndicator()
