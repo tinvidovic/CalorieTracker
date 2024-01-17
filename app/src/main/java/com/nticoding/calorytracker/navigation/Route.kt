@@ -1,4 +1,4 @@
-package com.nticoding.core.navigation
+package com.nticoding.calorytracker.navigation
 
 object Route {
     // Onboarding

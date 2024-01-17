@@ -57,7 +57,7 @@ fun NutrientsHeader(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             UnitDisplay(
-                amount = animatedCalorieCount.value,
+                amount = state.totalCalories,
                 unit = stringResource(id = coreR.string.kcal),
                 amountColor = MaterialTheme.colors.onPrimary,
                 amountTextSize = 40.sp,
@@ -71,7 +71,7 @@ fun NutrientsHeader(
                     color = MaterialTheme.colors.onPrimary
                 )
                 UnitDisplay(
-                    amount = animatedCalorieCount.value,
+                    amount = state.caloriesGoal,
                     unit = stringResource(id = coreR.string.kcal),
                     amountColor = MaterialTheme.colors.onPrimary,
                     amountTextSize = 40.sp,

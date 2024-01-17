@@ -10,7 +10,6 @@ import com.nticoding.core.domain.use_case.FilterOutDigitsUseCase
 import com.nticoding.core.util.UIEvent
 import com.nticoding.core.util.UIText
 import com.nticoding.core.R
-import com.nticoding.core.navigation.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -52,7 +51,7 @@ class AgeViewModel @Inject constructor(
             }
 
             preferences.saveAge(ageNumber)
-            _uiEvent.send(UIEvent.Navigate(Route.HEIGHT))
+            _uiEvent.send(UIEvent.Success)
         }
     }
 }

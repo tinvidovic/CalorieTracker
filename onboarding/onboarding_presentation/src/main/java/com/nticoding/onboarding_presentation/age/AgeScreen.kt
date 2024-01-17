@@ -26,7 +26,7 @@ import com.nticoding.onboarding_presentation.components.UnitTextField
 @Composable
 fun AgeScreen(
     scaffoldState: ScaffoldState,
-    onNavigate: (UIEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: AgeViewModel = hiltViewModel()
 ) {
     val spacing = localSpacing.current
@@ -35,7 +35,7 @@ fun AgeScreen(
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UIEvent.Navigate -> onNavigate(event)
+                is UIEvent.Success -> onNextClick()
                 is UIEvent.ShowSnackbar -> {
                     scaffoldState.snackbarHostState.showSnackbar(
                         message = event.message.asString(context)

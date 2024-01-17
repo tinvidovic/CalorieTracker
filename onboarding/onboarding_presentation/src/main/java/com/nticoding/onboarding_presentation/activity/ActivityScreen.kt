@@ -28,14 +28,14 @@ import com.nticoding.onboarding_presentation.components.SelectableButton
 
 @Composable
 fun ActivityScreen(
-    onNavigate: (UIEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: ActivityViewModel = hiltViewModel()
 ) {
     val spacing = localSpacing.current
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UIEvent.Navigate -> onNavigate(event)
+                is UIEvent.Success -> onNextClick()
                 else -> Unit
             }
         }

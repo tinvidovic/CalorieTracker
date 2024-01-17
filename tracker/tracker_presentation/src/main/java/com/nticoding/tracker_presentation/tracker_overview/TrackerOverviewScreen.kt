@@ -27,19 +27,11 @@ import com.nticoding.tracker_presentation.tracker_overview.components.TrackedFoo
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 fun TrackerOverviewScreen(
-    onNavigate: (UIEvent.Navigate) -> Unit, viewModel: TrackerOverviewViewModel = hiltViewModel()
+    onNavigateToSearch: (String, Int, Int, Int) -> Unit, viewModel: TrackerOverviewViewModel = hiltViewModel()
 ) {
     val spacing = localSpacing.current
     val state = viewModel.state
     val context = LocalContext.current
-    LaunchedEffect(key1 = context) {
-        viewModel.uiEvent.collect {event ->
-            when(event) {
-                is UIEvent.Navigate -> onNavigate(event)
-                else -> Unit
-            }
-        }
-    }
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -69,7 +61,11 @@ fun TrackerOverviewScreen(
                         .fillMaxWidth()
                         .padding(horizontal = spacing.spaceSmall)
                 ) {
-                    state.trackedFoods.forEach { food ->
+                    state.trackedFoods
+                        .filter {food ->
+                            food.mealType == meal.mealType
+                        }
+                        .forEach { food ->
                         TrackedFoodItem(trackedFood = food, onDeleteClick = {
                             viewModel.onEvent(
                                 TrackerOverviewEvent.OnDeleteTrackedFoodClick(food)
@@ -81,7 +77,12 @@ fun TrackerOverviewScreen(
                         text = stringResource(
                             id = coreR.string.add_meal, meal.name.asString(context)
                         ), onClick = {
-                            viewModel.onEvent(TrackerOverviewEvent.OnAddFoodClick(meal))
+                            onNavigateToSearch(
+                                meal.name.asString(context),
+                                state.date.dayOfMonth,
+                                state.date.monthValue,
+                                state.date.year
+                            )
                         }, modifier = Modifier.fillMaxWidth()
                     )
                 }

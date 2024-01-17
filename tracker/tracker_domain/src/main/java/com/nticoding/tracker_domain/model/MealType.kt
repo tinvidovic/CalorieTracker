@@ -10,7 +10,7 @@ sealed class MealType(val name: String) {
 
         fun fromString(name: String): MealType {
 
-            return when(name) {
+            return when(name.lowercase()) {
                 "breakfast" -> Breakfast
                 "lunch" -> Lunch
                 "dinner" -> Dinner
