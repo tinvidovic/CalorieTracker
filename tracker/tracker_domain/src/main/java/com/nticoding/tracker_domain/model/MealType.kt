@@ -11,10 +11,10 @@ sealed class MealType(val name: String) {
         fun fromString(name: String): MealType {
 
             return when(name) {
-                "breakfast" -> Breakfast
-                "lunch" -> Lunch
-                "dinner" -> Dinner
-                "snack" -> Snack
+                "Breakfast" -> Breakfast
+                "Lunch" -> Lunch
+                "Dinner" -> Dinner
+                "Snack" -> Snack
                 else -> Snack
             }
         }

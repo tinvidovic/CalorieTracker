@@ -61,7 +61,11 @@ fun TrackerOverviewScreen(
                         .fillMaxWidth()
                         .padding(horizontal = spacing.spaceSmall)
                 ) {
-                    state.trackedFoods.forEach { food ->
+                    state.trackedFoods
+                        .filter {food ->
+                            food.mealType == meal.mealType
+                        }
+                        .forEach { food ->
                         TrackedFoodItem(trackedFood = food, onDeleteClick = {
                             viewModel.onEvent(
                                 TrackerOverviewEvent.OnDeleteTrackedFoodClick(food)
