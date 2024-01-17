@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nticoding.core.R
 import com.nticoding.core.domain.preferences.Preferences
-import com.nticoding.core.navigation.Route
 import com.nticoding.core.util.UIEvent
 import com.nticoding.core.util.UIText
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -49,7 +48,7 @@ class WeightViewModel @Inject constructor(
             }
 
             preferences.saveWeight(weightNumber)
-            _uiEvent.send(UIEvent.Navigate(Route.ACTIVITY))
+            _uiEvent.send(UIEvent.Success)
         }
     }
 }

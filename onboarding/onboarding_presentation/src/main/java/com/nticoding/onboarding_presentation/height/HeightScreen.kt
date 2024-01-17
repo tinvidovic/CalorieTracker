@@ -22,12 +22,11 @@ import com.nticoding.core.util.UIEvent
 import com.nticoding.core_ui.localSpacing
 import com.nticoding.onboarding_presentation.components.ActionButton
 import com.nticoding.onboarding_presentation.components.UnitTextField
-import com.nticoding.onboarding_presentation.height.HeightViewModel
 
 @Composable
 fun HeightScreen(
     scaffoldState: ScaffoldState,
-    onNavigate: (UIEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: HeightViewModel = hiltViewModel()
 ) {
     val spacing = localSpacing.current
@@ -36,7 +35,7 @@ fun HeightScreen(
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UIEvent.Navigate -> onNavigate(event)
+                is UIEvent.Success -> onNextClick()
                 is UIEvent.ShowSnackbar -> {
                     scaffoldState.snackbarHostState.showSnackbar(
                         message = event.message.asString(context)
