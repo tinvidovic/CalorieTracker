@@ -16,7 +16,7 @@ android {
         versionCode = ProjectConfig.versionCode
         versionName = ProjectConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.nticoding.calorytracker.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -41,9 +41,13 @@ android {
         kotlinCompilerExtensionVersion = Compose.composeCompilerVersion
     }
     packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
+        resources.excludes.addAll(
+            listOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+                "/META-INF/{AL2.0,LGPL2.1}"
+        )
+        )
     }
 }
 

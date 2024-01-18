@@ -80,7 +80,7 @@ class TrackerRepositoryTest {
 
     @Test
     fun `Search food, malformed response, returns failure`() = runBlocking{
-        
+
         // HTTP OK response code, with a sample valid food response
         mockWebServer.enqueue(
             MockResponse()
